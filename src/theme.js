@@ -17,11 +17,11 @@ const theme = {
     bold: '700',
   },
   container: {
-    height: 100,
+    height: 80,
     backgroundColor: '#24292e',
   },
   containerText: {
-    paddingTop: 40,
+    paddingTop: 25,
     paddingLeft: 10,
   },
   main: {
