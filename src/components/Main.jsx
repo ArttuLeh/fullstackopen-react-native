@@ -4,6 +4,7 @@ import { Route, Routes, Navigate } from 'react-router-native';
 import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import theme from '../theme';
+import SingIn from './SingIn';
 
 const Main = () => {
   const styles = StyleSheet.create({
@@ -18,6 +19,7 @@ const Main = () => {
       <AppBar />
       <Routes>
         <Route path="/" element={<RepositoryList />} exact />
+        <Route path="/singin" element={<SingIn />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </View>
