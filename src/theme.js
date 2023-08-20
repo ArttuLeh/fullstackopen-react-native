@@ -17,12 +17,13 @@ const theme = {
     bold: '700',
   },
   container: {
-    height: 80,
     backgroundColor: '#24292e',
   },
-  containerText: {
+  appBarText: {
     paddingTop: 25,
     paddingLeft: 10,
+    paddingBottom: 10,
+    flexDirection: 'row',
   },
   main: {
     backgroundColor: '#e1e4e8',
