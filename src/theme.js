@@ -24,6 +24,9 @@ const theme = {
     paddingTop: 40,
     paddingLeft: 10,
   },
+  main: {
+    backgroundColor: '#e1e4e8',
+  },
 };
 
 export default theme;

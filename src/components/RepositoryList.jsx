@@ -57,7 +57,6 @@ const repositories = [
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
-  console.log(repositories);
   return (
     <FlatList
       data={repositories}
