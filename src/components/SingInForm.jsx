@@ -24,7 +24,7 @@ const SingInForm = ({ onSubmit }) => {
   });
   return (
     <View style={styles.container}>
-      <FormikTextInput name="name" placeholder="Name" />
+      <FormikTextInput name="username" placeholder="Username" />
       <FormikTextInput
         secureTextEntry={true}
         name="password"
