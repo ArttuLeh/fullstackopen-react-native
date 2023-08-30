@@ -2,6 +2,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import SingInForm from './SingInForm';
+import useSingIn from '../hooks/useSingIn';
 
 const initialValues = {
   username: '',
@@ -14,8 +15,17 @@ const validationSchema = yup.object().shape({
 });
 
 const SingIn = () => {
-  const onSubmit = (values) => {
-    console.log(values);
+  const [singIn] = useSingIn();
+
+  const onSubmit = async (values) => {
+    const { username, password } = values;
+
+    try {
+      const { data } = await singIn({ username, password });
+      console.log('data', data);
+    } catch (e) {
+      console.log('error', e);
+    }
   };
   return (
     <Formik
