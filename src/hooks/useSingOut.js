@@ -11,8 +11,8 @@ const useSingOut = () => {
     return 'Loading..';
   }
 
-  const singedIn = data.me;
+  const loggedIn = data.me;
 
-  return { singedIn, loading, error };
+  return { loggedIn, loading, error };
 };
 export default useSingOut;

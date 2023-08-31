@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
 });
 
 const AppBarTab = () => {
-  const singedIn = useSingOut();
+  const loggedIn = useSingOut();
   const authStorage = useAuthStorage();
   const apolloClient = useApolloClient();
 
-  console.log('singedIN', singedIn.singedIn);
+  console.log('loggedIn', loggedIn.loggedIn);
 
   const logOut = async () => {
     await authStorage.removeAccessToken();
@@ -39,7 +39,7 @@ const AppBarTab = () => {
         </Text>
       </Link>
       <Link to="/singin">
-        {singedIn.singedIn === null ? (
+        {loggedIn.loggedIn === null ? (
           <Text
             style={styles.text}
             color="header"
