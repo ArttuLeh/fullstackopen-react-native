@@ -26,3 +26,12 @@ export const SING_IN = gql`
     }
   }
 `;
+
+export const SING_OUT = gql`
+  query {
+    me {
+      id
+      username
+    }
+  }
+`;
