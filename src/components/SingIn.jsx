@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { useNavigate } from 'react-router-native';
 
 import SingInForm from './SingInForm';
 import useSingIn from '../hooks/useSingIn';
@@ -16,6 +17,7 @@ const validationSchema = yup.object().shape({
 
 const SingIn = () => {
   const [singIn] = useSingIn();
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     const { username, password } = values;
@@ -23,6 +25,7 @@ const SingIn = () => {
     try {
       const { data } = await singIn({ username, password });
       console.log('data', data);
+      navigate('/');
     } catch (e) {
       console.log('error', e);
     }
