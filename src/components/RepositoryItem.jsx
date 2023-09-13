@@ -11,7 +11,7 @@ const RepositoryItem = ({ repositories }) => {
     },
   });
   return (
-    <View style={styles.flexContainer}>
+    <View testID="repositoryItem" style={styles.flexContainer}>
       <RepositoryInfo repositories={repositories} />
       <RepositoryCounts repositories={repositories} />
     </View>

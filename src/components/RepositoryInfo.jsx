@@ -40,13 +40,13 @@ const RepositoryInfo = ({ repositories }) => {
         source={{ uri: repositories.ownerAvatarUrl }}
       />
       <View style={styles.flexItemB}>
-        <View style={styles.fullName}>
+        <View testID="fullName" style={styles.fullName}>
           <Text fontWeight="bold">{repositories.fullName}</Text>
         </View>
-        <View style={styles.description}>
+        <View testID="description" style={styles.description}>
           <Text color="textSecondary">{repositories.description}</Text>
         </View>
-        <View style={styles.language}>
+        <View testID="language" style={styles.language}>
           <Text color="header">{repositories.language}</Text>
         </View>
       </View>
