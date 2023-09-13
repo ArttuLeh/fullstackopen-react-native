@@ -15,10 +15,7 @@ const validationSchema = yup.object().shape({
   password: yup.string().required('Password is required'),
 });
 
-const SingIn = () => {
-  const [singIn] = useSingIn();
-  const navigate = useNavigate();
-
+export const SingInContainer = ({ singIn, navigate }) => {
   const onSubmit = async (values) => {
     const { username, password } = values;
 
@@ -39,5 +36,12 @@ const SingIn = () => {
       {({ handleSubmit }) => <SingInForm onSubmit={handleSubmit} />}
     </Formik>
   );
+};
+
+const SingIn = () => {
+  const [singIn] = useSingIn();
+  const navigate = useNavigate();
+
+  return <SingInContainer singIn={singIn} navigate={navigate} />;
 };
 export default SingIn;
