@@ -2,7 +2,7 @@ import { View, StyleSheet } from 'react-native';
 import RepositoryCounts from './RepositoryCounts';
 import RepositoryInfo from './RepositoryInfo';
 
-const RepositoryItem = ({ repositories }) => {
+const RepositoryItem = ({ repository }) => {
   const styles = StyleSheet.create({
     flexContainer: {
       display: 'flex',
@@ -12,8 +12,8 @@ const RepositoryItem = ({ repositories }) => {
   });
   return (
     <View testID="repositoryItem" style={styles.flexContainer}>
-      <RepositoryInfo repositories={repositories} />
-      <RepositoryCounts repositories={repositories} />
+      <RepositoryInfo repository={repository} />
+      <RepositoryCounts repository={repository} />
     </View>
   );
 };

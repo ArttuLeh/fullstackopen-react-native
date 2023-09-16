@@ -1,7 +1,7 @@
 import Text from './Text';
 import { StyleSheet, View } from 'react-native';
 
-const RepositoryInfo = ({ repositories }) => {
+const RepositoryInfo = ({ repository }) => {
   const styles = StyleSheet.create({
     flexItem: {
       flexDirection: 'row',
@@ -33,7 +33,7 @@ const RepositoryInfo = ({ repositories }) => {
     <View style={styles.flexItem}>
       <View testID="stargazersCount" style={styles.stars}>
         <Text style={styles.text} fontWeight="bold">
-          {(repositories.stargazersCount / 1000).toFixed(1)}k
+          {(repository.stargazersCount / 1000).toFixed(1)}k
         </Text>
         <Text style={styles.text} color="textSecondary">
           Stars
@@ -41,7 +41,7 @@ const RepositoryInfo = ({ repositories }) => {
       </View>
       <View testID="forksCount" style={styles.forks}>
         <Text style={styles.text} fontWeight="bold">
-          {(repositories.forksCount / 1000).toFixed(1)}k
+          {(repository.forksCount / 1000).toFixed(1)}k
         </Text>
         <Text style={styles.text} color="textSecondary">
           Forks
@@ -49,7 +49,7 @@ const RepositoryInfo = ({ repositories }) => {
       </View>
       <View testID="reviewCount" style={styles.reviews}>
         <Text style={styles.text} fontWeight="bold">
-          {repositories.reviewCount}
+          {repository.reviewCount}
         </Text>
         <Text style={styles.text} color="textSecondary">
           Reviews
@@ -57,7 +57,7 @@ const RepositoryInfo = ({ repositories }) => {
       </View>
       <View testID="ratingAverage" style={styles.raiting}>
         <Text style={styles.text} fontWeight="bold">
-          {repositories.ratingAverage}
+          {repository.ratingAverage}
         </Text>
         <Text style={styles.text} color="textSecondary">
           Raiting

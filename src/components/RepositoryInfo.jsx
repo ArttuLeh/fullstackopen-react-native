@@ -2,7 +2,7 @@ import { View, Image, StyleSheet } from 'react-native';
 import Text from './Text';
 import theme from '../theme';
 
-const RepositoryInfo = ({ repositories }) => {
+const RepositoryInfo = ({ repository }) => {
   const styles = StyleSheet.create({
     image: {
       width: 50,
@@ -35,19 +35,16 @@ const RepositoryInfo = ({ repositories }) => {
   });
   return (
     <View style={styles.flexItemA}>
-      <Image
-        style={styles.image}
-        source={{ uri: repositories.ownerAvatarUrl }}
-      />
+      <Image style={styles.image} source={{ uri: repository.ownerAvatarUrl }} />
       <View style={styles.flexItemB}>
         <View testID="fullName" style={styles.fullName}>
-          <Text fontWeight="bold">{repositories.fullName}</Text>
+          <Text fontWeight="bold">{repository.fullName}</Text>
         </View>
         <View testID="description" style={styles.description}>
-          <Text color="textSecondary">{repositories.description}</Text>
+          <Text color="textSecondary">{repository.description}</Text>
         </View>
         <View testID="language" style={styles.language}>
-          <Text color="header">{repositories.language}</Text>
+          <Text color="header">{repository.language}</Text>
         </View>
       </View>
     </View>
