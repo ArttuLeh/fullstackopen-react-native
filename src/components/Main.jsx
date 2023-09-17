@@ -5,7 +5,7 @@ import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import theme from '../theme';
 import SingIn from './SingIn';
-import SingleRepository from './SingleRepository';
+import SingleRepositoryItem from './SingleRepositoryItem';
 
 const Main = () => {
   const styles = StyleSheet.create({
@@ -22,7 +22,7 @@ const Main = () => {
         <Route path="/" element={<RepositoryList />} exact />
         <Route path="/singin" element={<SingIn />} />
         <Route path="*" element={<Navigate to="/" replace />} />
-        <Route path="/:id" element={<SingleRepository />} />
+        <Route path="/:id" element={<SingleRepositoryItem />} />
       </Routes>
     </View>
   );

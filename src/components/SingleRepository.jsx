@@ -1,24 +1,16 @@
-import { useParams } from 'react-router-native';
 import { View, Pressable, StyleSheet, Linking } from 'react-native';
 
-import useRepository from '../hooks/useRepository';
 import RepositoryItem from './RepositoryItem';
 import Text from './Text';
 import theme from '../theme';
 
-const SingleRepository = () => {
-  const { id } = useParams();
-  const { repository, loading } = useRepository(id);
-
-  if (loading) {
-    return <Text>loading..</Text>;
-  }
-
+const SingleRepository = ({ repository }) => {
   const styles = StyleSheet.create({
     flexContainer: {
       display: 'flex',
       backgroundColor: 'white',
       padding: 5,
+      marginBottom: 10,
     },
     pressable: {
       backgroundColor: theme.colors.primary,
