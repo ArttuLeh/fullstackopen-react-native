@@ -38,6 +38,18 @@ const AppBarTab = () => {
           Repositories
         </Text>
       </Link>
+      {loggedIn.loggedIn ? (
+        <Link to="/createreview">
+          <Text
+            style={styles.text}
+            color="header"
+            fontWeight="bold"
+            fontSize="subheading"
+          >
+            Create a Review
+          </Text>
+        </Link>
+      ) : null}
       <Link to="/singin">
         {loggedIn.loggedIn === null ? (
           <Text

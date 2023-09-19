@@ -6,6 +6,7 @@ import AppBar from './AppBar';
 import theme from '../theme';
 import SingIn from './SingIn';
 import SingleRepositoryItem from './SingleRepositoryItem';
+import CreateReview from './CreateReview';
 
 const Main = () => {
   const styles = StyleSheet.create({
@@ -20,9 +21,10 @@ const Main = () => {
       <AppBar />
       <Routes>
         <Route path="/" element={<RepositoryList />} exact />
-        <Route path="/singin" element={<SingIn />} />
+        <Route path="/singin" element={<SingIn />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
-        <Route path="/:id" element={<SingleRepositoryItem />} />
+        <Route path="/:id" element={<SingleRepositoryItem />} exact />
+        <Route path="/createreview" element={<CreateReview />} />
       </Routes>
     </View>
   );
