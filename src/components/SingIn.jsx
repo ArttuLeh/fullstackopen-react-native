@@ -20,7 +20,7 @@ export const SingInContainer = ({ singIn, navigate }) => {
     const { username, password } = values;
 
     try {
-      const { data } = await singIn({ username, password });
+      const data = await singIn({ username, password });
       console.log('data', data);
       navigate('/');
     } catch (e) {

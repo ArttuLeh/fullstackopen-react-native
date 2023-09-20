@@ -46,7 +46,7 @@ const AppBarTab = () => {
             fontWeight="bold"
             fontSize="subheading"
           >
-            Create a Review
+            Create a review
           </Text>
         </Link>
       ) : null}
@@ -58,7 +58,7 @@ const AppBarTab = () => {
             fontWeight="bold"
             fontSize="subheading"
           >
-            Sing In
+            Sing in
           </Text>
         ) : (
           <Pressable onPress={logOut}>
@@ -68,11 +68,23 @@ const AppBarTab = () => {
               fontWeight="bold"
               fontSize="subheading"
             >
-              Sing Out
+              Sing out
             </Text>
           </Pressable>
         )}
       </Link>
+      {loggedIn.loggedIn === null ? (
+        <Link to="/singup">
+          <Text
+            style={styles.text}
+            color="header"
+            fontWeight="bold"
+            fontSize="subheading"
+          >
+            Sing up
+          </Text>
+        </Link>
+      ) : null}
     </View>
   );
 };

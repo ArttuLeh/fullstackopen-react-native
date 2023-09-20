@@ -7,6 +7,7 @@ import theme from '../theme';
 import SingIn from './SingIn';
 import SingleRepositoryItem from './SingleRepositoryItem';
 import CreateReview from './CreateReview';
+import SingUp from './SingUp';
 
 const Main = () => {
   const styles = StyleSheet.create({
@@ -25,6 +26,7 @@ const Main = () => {
         <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/:id" element={<SingleRepositoryItem />} exact />
         <Route path="/createreview" element={<CreateReview />} />
+        <Route path="/singup" element={<SingUp />} exact />
       </Routes>
     </View>
   );
