@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { FlatList, View, StyleSheet, Pressable } from 'react-native';
 
 import RepositoryItem from './RepositoryItem';
 import useRepositories from '../hooks/useRepositories';
 import { useNavigate } from 'react-router-native';
+import RepositoryListHeader from './RepositoryListHeader';
 
 const styles = StyleSheet.create({
   separator: {
@@ -12,7 +14,12 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-export const RepositoryListContainer = ({ repositories, navigate }) => {
+export const RepositoryListContainer = ({
+  repositories,
+  navigate,
+  handleValueChange,
+  selectedValue,
+}) => {
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : [];
@@ -21,6 +28,12 @@ export const RepositoryListContainer = ({ repositories, navigate }) => {
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
+      ListHeaderComponent={() => (
+        <RepositoryListHeader
+          handleValueChange={handleValueChange}
+          selectedValue={selectedValue}
+        />
+      )}
       renderItem={({ item }) => (
         <Pressable onPress={() => navigate(`/${item.id}`)}>
           <RepositoryItem repository={item} />
@@ -32,11 +45,21 @@ export const RepositoryListContainer = ({ repositories, navigate }) => {
 };
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
+  const [selectedValue, setSelectedValue] = useState('lastest');
+  const { repositories } = useRepositories(selectedValue);
   const navigate = useNavigate();
 
+  const handleValueChange = (value) => {
+    setSelectedValue(value);
+  };
+
   return (
-    <RepositoryListContainer repositories={repositories} navigate={navigate} />
+    <RepositoryListContainer
+      repositories={repositories}
+      navigate={navigate}
+      selectedValue={selectedValue}
+      handleValueChange={handleValueChange}
+    />
   );
 };
 
