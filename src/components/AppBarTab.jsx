@@ -1,11 +1,11 @@
 import { Pressable, StyleSheet, View } from 'react-native';
-import { Link } from 'react-router-native';
+import { Link, useNavigate } from 'react-router-native';
 import { useApolloClient } from '@apollo/client';
 
-import useSingOut from '../hooks/useSingOut';
 import useAuthStorage from '../hooks/useAuthStorage';
 import Text from './Text';
 import theme from '../theme';
+import useCurrentUser from '../hooks/useCurrentUser';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,52 +15,58 @@ const styles = StyleSheet.create({
     flexDirection: theme.appBarText.flexDirection,
   },
   text: {
-    paddingLeft: 10,
+    paddingRight: 15,
   },
 });
 
 const AppBarTab = () => {
-  const loggedIn = useSingOut();
+  const loggedIn = useCurrentUser(false);
   const authStorage = useAuthStorage();
   const apolloClient = useApolloClient();
+  const navigate = useNavigate();
 
-  console.log('loggedIn', loggedIn.loggedIn);
+  console.log('loggedIn', loggedIn.userData);
 
   const logOut = async () => {
     await authStorage.removeAccessToken();
     apolloClient.resetStore();
+    navigate('/');
   };
 
   return (
     <View style={styles.container}>
       <Link to="/">
-        <Text color="header" fontWeight="bold" fontSize="subheading">
+        <Text
+          style={styles.text}
+          color="header"
+          fontWeight="bold"
+          fontSize="subheading"
+        >
           Repositories
         </Text>
       </Link>
-      {loggedIn.loggedIn ? (
-        <Link to="/createreview">
-          <Text
-            style={styles.text}
-            color="header"
-            fontWeight="bold"
-            fontSize="subheading"
-          >
-            Create a review
-          </Text>
-        </Link>
-      ) : null}
-      <Link to="/singin">
-        {loggedIn.loggedIn === null ? (
-          <Text
-            style={styles.text}
-            color="header"
-            fontWeight="bold"
-            fontSize="subheading"
-          >
-            Sing in
-          </Text>
-        ) : (
+      {loggedIn.userData ? (
+        <>
+          <Link to="/createreview">
+            <Text
+              style={styles.text}
+              color="header"
+              fontWeight="bold"
+              fontSize="subheading"
+            >
+              Create a review
+            </Text>
+          </Link>
+          <Link to="myreview">
+            <Text
+              style={styles.text}
+              color="header"
+              fontWeight="bold"
+              fontSize="subheading"
+            >
+              My review
+            </Text>
+          </Link>
           <Pressable onPress={logOut}>
             <Text
               style={styles.text}
@@ -71,20 +77,31 @@ const AppBarTab = () => {
               Sing out
             </Text>
           </Pressable>
-        )}
-      </Link>
-      {loggedIn.loggedIn === null ? (
-        <Link to="/singup">
-          <Text
-            style={styles.text}
-            color="header"
-            fontWeight="bold"
-            fontSize="subheading"
-          >
-            Sing up
-          </Text>
-        </Link>
-      ) : null}
+        </>
+      ) : (
+        <>
+          <Link to="/singin">
+            <Text
+              style={styles.text}
+              color="header"
+              fontWeight="bold"
+              fontSize="subheading"
+            >
+              Sing in
+            </Text>
+          </Link>
+          <Link to="/singup">
+            <Text
+              style={styles.text}
+              color="header"
+              fontWeight="bold"
+              fontSize="subheading"
+            >
+              Sing up
+            </Text>
+          </Link>
+        </>
+      )}
     </View>
   );
 };

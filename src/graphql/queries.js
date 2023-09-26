@@ -66,11 +66,24 @@ export const SING_IN = gql`
   }
 `;
 
-export const SING_OUT = gql`
-  query {
+export const GET_CURRENT_USER = gql`
+  query getCurrentUser($includeReviews: Boolean = false) {
     me {
       id
       username
+      reviews @include(if: $includeReviews) {
+        edges {
+          node {
+            rating
+            user {
+              username
+            }
+            createdAt
+            text
+            id
+          }
+        }
+      }
     }
   }
 `;

@@ -8,15 +8,17 @@ import SingIn from './SingIn';
 import SingleRepositoryItem from './SingleRepositoryItem';
 import CreateReview from './CreateReview';
 import SingUp from './SingUp';
+import ClientReview from './ClientReview';
+
+const styles = StyleSheet.create({
+  main: {
+    backgroundColor: theme.main.backgroundColor,
+    flexGrow: 1,
+    flexShrink: 1,
+  },
+});
 
 const Main = () => {
-  const styles = StyleSheet.create({
-    main: {
-      backgroundColor: theme.main.backgroundColor,
-      flexGrow: 1,
-      flexShrink: 1,
-    },
-  });
   return (
     <View style={styles.main}>
       <AppBar />
@@ -27,6 +29,7 @@ const Main = () => {
         <Route path="/:id" element={<SingleRepositoryItem />} exact />
         <Route path="/createreview" element={<CreateReview />} />
         <Route path="/singup" element={<SingUp />} exact />
+        <Route path="/myreview" element={<ClientReview />} exact />
       </Routes>
     </View>
   );
