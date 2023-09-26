@@ -1,12 +1,13 @@
 import { useQuery } from '@apollo/client';
 
-import { GET_REPOSITORIES } from '../graphql /queries';
+import { GET_REPOSITORIES } from '../graphql/queries';
 
-const useRepositories = (selectedValue) => {
+const useRepositories = (selectedValue, searchQuery) => {
   switch (selectedValue) {
     case 'lastest':
       selectedValue = {
         orderBy: 'CREATED_AT',
+        orderDirection: 'DESC',
       };
       break;
     case 'highest':
@@ -30,6 +31,7 @@ const useRepositories = (selectedValue) => {
     variables: {
       orderBy: selectedValue.orderBy,
       orderDirection: selectedValue.orderDirection,
+      searchKeyword: searchQuery,
     },
   });
 
