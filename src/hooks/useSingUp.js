@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client';
 
-import { SING_UP } from '../graphql /queries';
+import { SING_UP } from '../graphql/queries';
 
 const singUp = () => {
   const [mutate, result] = useMutation(SING_UP);

@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client';
 import { useApolloClient } from '@apollo/client';
 
-import { SING_IN } from '../graphql /queries';
+import { SING_IN } from '../graphql/queries';
 import useAuthStorage from './useAuthStorage';
 
 const useSingIn = () => {
