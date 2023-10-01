@@ -47,6 +47,7 @@ export const GET_REOSITORY = gql`
             text
             rating
             createdAt
+
             user {
               id
               username
@@ -81,6 +82,7 @@ export const GET_CURRENT_USER = gql`
             createdAt
             text
             id
+            repositoryId
           }
         }
       }
@@ -102,5 +104,11 @@ export const SING_UP = gql`
       id
       username
     }
+  }
+`;
+
+export const DELETE_REVIEW = gql`
+  mutation DeleteReview($deleteReviewId: ID!) {
+    deleteReview(id: $deleteReviewId)
   }
 `;
