@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
 });
+
 const ItemSeparator = () => <View style={styles.separator} />;
 
 export class RepositoryListContainer extends React.Component {
@@ -31,7 +32,7 @@ export class RepositoryListContainer extends React.Component {
   };
 
   render() {
-    const { repositories, navigate } = this.props;
+    const { repositories, navigate, onEndReach } = this.props;
     const repositoryNodes = repositories
       ? repositories.edges.map((edge) => edge.node)
       : [];
@@ -48,6 +49,8 @@ export class RepositoryListContainer extends React.Component {
           </Pressable>
         )}
         keyExtractor={repositoryNodes.id}
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0.5}
       />
     );
   }
@@ -57,8 +60,16 @@ const RepositoryList = () => {
   const [selectedValue, setSelectedValue] = useState('lastest');
   const [searchQuery, setSearchQuery] = useState('');
   const [searchQueryDebounce] = useDebounce(searchQuery, 500);
-  const { repositories } = useRepositories(selectedValue, searchQueryDebounce);
+  const { repositories, fetchMore } = useRepositories({
+    first: 5,
+    orderBy: selectedValue,
+    searchKeyword: searchQueryDebounce,
+  });
   const navigate = useNavigate();
+
+  const onEndReach = () => {
+    fetchMore();
+  };
 
   return (
     <RepositoryListContainer
@@ -66,6 +77,7 @@ const RepositoryList = () => {
       navigate={navigate}
       setSelectedValue={setSelectedValue}
       setSearchQuery={setSearchQuery}
+      onEndReach={onEndReach}
     />
   );
 };

@@ -2,46 +2,63 @@ import { useQuery } from '@apollo/client';
 
 import { GET_REPOSITORIES } from '../graphql/queries';
 
-const useRepositories = (selectedValue, searchQuery) => {
-  switch (selectedValue) {
+const useRepositories = (variables) => {
+  switch (variables.orderBy) {
     case 'lastest':
-      selectedValue = {
-        orderBy: 'CREATED_AT',
+      variables.orderBy = {
+        sortValue: 'CREATED_AT',
         orderDirection: 'DESC',
       };
       break;
     case 'highest':
-      selectedValue = {
-        orderBy: 'RATING_AVERAGE',
+      variables.orderBy = {
+        sortValue: 'RATING_AVERAGE',
         orderDirection: 'DESC',
       };
       break;
     case 'lowest':
-      selectedValue = {
-        orderBy: 'RATING_AVERAGE',
+      variables.orderBy = {
+        sortValue: 'RATING_AVERAGE',
         orderDirection: 'ASC',
       };
       break;
     default:
-      selectedValue;
+      variables.orderBy;
   }
 
-  const { data, error, loading } = useQuery(GET_REPOSITORIES, {
+  const { data, loading, fetchMore, ...result } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: 'cache-and-network',
     variables: {
-      orderBy: selectedValue.orderBy,
-      orderDirection: selectedValue.orderDirection,
-      searchKeyword: searchQuery,
+      first: variables.first,
+      orderBy: variables.orderBy.sortValue,
+      orderDirection: variables.orderBy.orderDirection,
+      searchKeyword: variables.searchKeyword,
     },
   });
 
-  if (loading) {
-    return 'Loading..';
-  }
+  const handleFetchMore = () => {
+    const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
 
-  const repositories = data.repositories;
+    if (!canFetchMore) {
+      return;
+    }
 
-  return { repositories, loading, error };
+    fetchMore({
+      variables: {
+        after: data.repositories.pageInfo.endCursor,
+        orderBy: variables.orderBy.sortValue,
+        orderDirection: variables.orderBy.orderDirection,
+        searchKeyword: variables.searchKeyword,
+      },
+    });
+  };
+
+  return {
+    repositories: data?.repositories,
+    fetchMore: handleFetchMore,
+    loading,
+    ...result,
+  };
 };
 
 export default useRepositories;
