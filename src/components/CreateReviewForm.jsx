@@ -4,27 +4,28 @@ import FormikTextInput from './FormikTextInput';
 import Text from './Text';
 import theme from '../theme';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  pressable: {
+    backgroundColor: theme.colors.primary,
+    margin: 10,
+    height: 40,
+    borderRadius: 3,
+  },
+  text: {
+    color: 'white',
+    textAlign: 'center',
+    padding: 10,
+  },
+  formikText: {
+    height: 100,
+  },
+});
+
 const CreateReviewForm = ({ onSubmit }) => {
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'flex-start',
-    },
-    pressable: {
-      backgroundColor: theme.colors.primary,
-      margin: 10,
-      height: 40,
-      borderRadius: 3,
-    },
-    text: {
-      color: 'white',
-      textAlign: 'center',
-      padding: 10,
-    },
-    formikText: {
-      height: 100,
-    },
-  });
   return (
     <View style={styles.container}>
       <FormikTextInput name="ownerName" placeholder="Repository owner name" />

@@ -1,34 +1,36 @@
-import Text from './Text';
 import { StyleSheet, View } from 'react-native';
 
+import Text from './Text';
+
+const styles = StyleSheet.create({
+  flexItem: {
+    flexDirection: 'row',
+    marginLeft: 10,
+    marginRight: 10,
+    flexGrow: 1,
+  },
+  stars: {
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  forks: {
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  reviews: {
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  raiting: {
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  text: {
+    textAlign: 'center',
+  },
+});
+
 const RepositoryInfo = ({ repository }) => {
-  const styles = StyleSheet.create({
-    flexItem: {
-      flexDirection: 'row',
-      marginLeft: 10,
-      marginRight: 10,
-      flexGrow: 1,
-    },
-    stars: {
-      marginLeft: 20,
-      marginRight: 20,
-    },
-    forks: {
-      marginLeft: 20,
-      marginRight: 20,
-    },
-    reviews: {
-      marginLeft: 20,
-      marginRight: 20,
-    },
-    raiting: {
-      marginLeft: 20,
-      marginRight: 20,
-    },
-    text: {
-      textAlign: 'center',
-    },
-  });
   return (
     <View style={styles.flexItem}>
       <View testID="stargazersCount" style={styles.stars}>

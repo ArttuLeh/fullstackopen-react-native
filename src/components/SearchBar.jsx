@@ -1,13 +1,13 @@
 import { Searchbar } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 
-const SearchBar = ({ setSearchQuery }) => {
-  const styles = StyleSheet.create({
-    searchBar: {
-      backgroundColor: 'white',
-    },
-  });
+const styles = StyleSheet.create({
+  searchBar: {
+    backgroundColor: 'white',
+  },
+});
 
+const SearchBar = ({ setSearchQuery }) => {
   return (
     <Searchbar
       style={styles.searchBar}

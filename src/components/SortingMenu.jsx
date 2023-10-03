@@ -2,6 +2,19 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, Menu, PaperProvider } from 'react-native-paper';
 
+const styles = StyleSheet.create({
+  menu: {
+    justifyContent: 'center',
+    alignItems: 'start',
+    backgroundColor: 'white',
+    marginTop: 4,
+    marginBottom: 4,
+    width: 130,
+    height: 46,
+    borderRadius: 25,
+  },
+});
+
 const SortingMenu = ({ setSelectedValue }) => {
   const [visible, setVisible] = useState(false);
 
@@ -9,18 +22,6 @@ const SortingMenu = ({ setSelectedValue }) => {
 
   const closeMenu = () => setVisible(false);
 
-  const styles = StyleSheet.create({
-    menu: {
-      justifyContent: 'center',
-      alignItems: 'start',
-      backgroundColor: 'white',
-      marginTop: 4,
-      marginBottom: 4,
-      width: 130,
-      height: 46,
-      borderRadius: 25,
-    },
-  });
   return (
     <PaperProvider>
       <View style={styles.menu}>

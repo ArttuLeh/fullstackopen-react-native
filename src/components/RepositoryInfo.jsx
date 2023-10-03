@@ -1,38 +1,40 @@
 import { View, Image, StyleSheet } from 'react-native';
+
 import Text from './Text';
 import theme from '../theme';
 
+const styles = StyleSheet.create({
+  image: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+    borderRadius: 5,
+  },
+  flexItemA: {
+    flexDirection: 'row',
+    flexGrow: 1,
+  },
+  flexItemB: {
+    flexDirection: 'column',
+    flexShrink: 1,
+    flexGrow: 1,
+  },
+  language: {
+    backgroundColor: theme.colors.primary,
+    marginBottom: 10,
+    alignSelf: 'flex-start',
+    padding: 5,
+    borderRadius: 5,
+  },
+  fullName: {
+    paddingBottom: 10,
+  },
+  description: {
+    paddingBottom: 10,
+  },
+});
+
 const RepositoryInfo = ({ repository }) => {
-  const styles = StyleSheet.create({
-    image: {
-      width: 50,
-      height: 50,
-      marginRight: 10,
-      borderRadius: 5,
-    },
-    flexItemA: {
-      flexDirection: 'row',
-      flexGrow: 1,
-    },
-    flexItemB: {
-      flexDirection: 'column',
-      flexShrink: 1,
-      flexGrow: 1,
-    },
-    language: {
-      backgroundColor: theme.colors.primary,
-      marginBottom: 10,
-      alignSelf: 'flex-start',
-      padding: 5,
-      borderRadius: 5,
-    },
-    fullName: {
-      paddingBottom: 10,
-    },
-    description: {
-      paddingBottom: 10,
-    },
-  });
   return (
     <View style={styles.flexItemA}>
       <Image style={styles.image} source={{ uri: repository.ownerAvatarUrl }} />

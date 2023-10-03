@@ -4,27 +4,27 @@ import RepositoryItem from './RepositoryItem';
 import Text from './Text';
 import theme from '../theme';
 
-const SingleRepository = ({ repository }) => {
-  const styles = StyleSheet.create({
-    flexContainer: {
-      display: 'flex',
-      backgroundColor: 'white',
-      padding: 5,
-      marginBottom: 10,
-    },
-    pressable: {
-      backgroundColor: theme.colors.primary,
-      margin: 5,
-      height: 40,
-      borderRadius: 3,
-    },
-    text: {
-      color: 'white',
-      textAlign: 'center',
-      padding: 10,
-    },
-  });
+const styles = StyleSheet.create({
+  flexContainer: {
+    display: 'flex',
+    backgroundColor: 'white',
+    padding: 5,
+    marginBottom: 10,
+  },
+  pressable: {
+    backgroundColor: theme.colors.primary,
+    margin: 5,
+    height: 40,
+    borderRadius: 3,
+  },
+  text: {
+    color: 'white',
+    textAlign: 'center',
+    padding: 10,
+  },
+});
 
+const SingleRepository = ({ repository }) => {
   return (
     <>
       <RepositoryItem repository={repository} />
